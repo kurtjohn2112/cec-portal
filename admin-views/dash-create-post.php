@@ -20,6 +20,7 @@ include '../functions/admin-logic.php';
     ?>
 </div>
 
+
 <section class="p-5 bg-light">
     <a href="<?php echo $previous ?>" class="btn btn-secondary"> <i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
     <div class="container">

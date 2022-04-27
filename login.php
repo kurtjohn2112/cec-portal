@@ -13,7 +13,6 @@ if (isset($_POST['login'])) {
 <section class="p-5 mt-5">
     <div class="container">
 
-        <a href="register.php" class="btn btn-secondary"> <i class="fa fa-arrow-circle-left" aria-hidden="true"> Register an account</i></a>
 
         <h1 class="display-4 text-center">CEC IT PORTAL</h1>
         <form action="" method="post" class="mt-5 border p-5 shadow">

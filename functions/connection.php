@@ -2,7 +2,7 @@
  session_start();
  function connect(){
      
-    return $conn = new mysqli('localhost','root','','cec_portal');
+    return $conn = new mysqli('localhost','root','','cec-portal');
  }
 
 

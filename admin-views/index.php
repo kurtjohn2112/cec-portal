@@ -93,9 +93,7 @@
     </div>
 </section>
 
-<footer class="p-5 bg-dark text-light text-center">
-    <p class="footer">Footer</p>
-</footer>
+
 
 
 <?php include '../html/foot.html' ?>

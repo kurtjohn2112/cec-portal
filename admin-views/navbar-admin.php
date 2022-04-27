@@ -6,9 +6,9 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg bg-light navbar-light">
     <div class="container">
-        <a href="#" class="navbar-brand">
+        <a href="index.php" class="navbar-brand">
             Students Portal
         </a>
         <button class="navbar-toggler" data-bs-target="#nav-collapse" data-bs-toggle="collapse">
@@ -20,24 +20,26 @@ if (isset($_SERVER['HTTP_REFERER'])) {
         <div class="collapse navbar-collapse" id="nav-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="" class="nav-link">Announcements</a>
+                    <a href="dash-create-post.php" class="nav-link">Create an Announcement</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="manage-sections.php" class="nav-link">Manage Sections</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">Events</a>
+                    <a href="create-user.php" class="nav-link">Register a student</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">Notifications</a>
+                    <a href="manage-students.php" class="nav-link">Manage Students</a>
+                </li>
+                <li class="nav-item">
+                    <a href="manage-subjects.php" class="nav-link">Manage Subjects</a>
                 </li>
             </ul>
 
         </div>
-        <div class="dropdown mx-2">
-            <a class="dropdown-toggle text-decoration-none text-muted" type="button" data-bs-toggle="dropdown">Dropdown</a>
 
-            <div class="dropdown-menu">
-                <a href="dash-create-post.php" class="dropdown-item">Posts</a>
-                <a href="#" class="dropdown-item">Manage Account</a>
-            </div>
-        </div>
     </div>
+
 </nav>
+
