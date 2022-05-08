@@ -133,7 +133,7 @@ function login($username, $password){
     $sql  = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
     $result = $conn->query($sql);
 
-    if($result){
+    if($result->num_rows == 1){
         $row = $result->fetch_assoc();
         $_SESSION['fullname'] = $row['firstname']." ".$row['lastname'];
         $_SESSION['section'] = $row['section'];
@@ -144,6 +144,8 @@ function login($username, $password){
         }else{
             header('location:admin-views/');
         }
+    }else{
+       die("ERROR: ".$conn->error);
     }
 
 }
