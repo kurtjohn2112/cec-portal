@@ -187,4 +187,41 @@ function show_week_date()
     return $dates;
 }
 
+
+function create_teacher($firstname,$lastname,$username,$password){
+    $conn = connect();
+    $sql = "INSERT INTO teachers(fname,lname,username,password)VALUES('$firstname','$lastname','$username','$password')";
+    $result = $conn->query($sql);
+
+    if($result){
+        echo '<div class="alert alert-warning alert-dismissible fade show mt-3 container" role="alert">
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <strong>Registered Successfully</strong> 
+        </div>';
+             
+        
+    }else{
+        die("ERROR: ". $conn->error);
+    }
+
+}
+function teacher_login($username, $password){
+    $conn = connect();
+    $sql  = "SELECT * FROM teachers WHERE username = '$username' AND password = '$password'";
+    $result = $conn->query($sql);
+
+    if($result->num_rows == 1){
+        $row = $result->fetch_assoc();
+        $_SESSION['fullname'] = $row['fname']." ".$row['lname'];
+
+        $_SESSION['id'] = $row['id'];
+       
+            header('location:teacher-views/dash-teacher.php');
+        
+    }else{
+       die("ERROR: ".$conn->error);
+    }
+
+}
+
 ?>

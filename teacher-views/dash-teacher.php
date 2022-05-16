@@ -2,7 +2,7 @@
 include '../html/head.html';
 include '../functions/student-logic.php';
 
-include 'navbar-student.php';
+include 'navbar-admin.php';
 foreach (show_week_date() as $day => $date) :
 
 endforeach;
@@ -19,9 +19,8 @@ $end = end($date_array);
             <div class="col-3">
                 <div class="card">
                     <div class="card-body">
-                        <p class="fw-bold">@<?php echo $_SESSION['fullname'] ?></p>
-                        <p class="text-muted small">Section: <?php echo $_SESSION['section'] ?></p>
-                        <p class="text-muted small">Year level: <?php echo $_SESSION['year'] ?></p>
+                        <p class="fw-bold">Teacher <?php echo $_SESSION['fullname'] ?></p>
+                        
                     </div>
                 </div>
             </div>

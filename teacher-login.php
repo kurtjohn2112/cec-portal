@@ -6,14 +6,14 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-   login($username,$password);
+   teacher_login($username,$password);
 }
 ?>
 
 <section class="p-5 mt-5">
     <div class="container">
 
-        <h1 class="display-4 text-center">CEC IT PORTAL</h1>
+        <h1 class="display-4 text-center">CEC IT PORTAL | TEACHER LOGIN</h1>
         <form action="" method="post" class="mt-5 border p-5 shadow">
             <input type="text" name="username" placeholder="" id="" class="form-control form-control-lg">
             <div class="form-text">Enter Username</div>
@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
             <div class="form-text">Enter Password</div>
 
             <button type="submit" name="login" class="btn btn-danger mt-4  w-25 btn-lg">Login</button>
-            <a href="teacher-login.php" class="text-decoration-none text-muted float-end mt-5">Login as teacher</a>
+            <a href="#" class="text-decoration-none text-muted float-end mt-5">Login as teacher</a>
 
         </form>
     </div>

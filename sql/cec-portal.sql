@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 27, 2022 at 09:14 AM
+-- Generation Time: May 16, 2022 at 02:49 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -50,7 +50,8 @@ INSERT INTO `grades` (`id`, `std_id`, `grade`, `subject`, `semester`) VALUES
 (8, 5, '2.1', 'IT10', 'FIRST SEMESTER'),
 (9, 6, '1.0', 'IT21', 'FIRST SEMESTER'),
 (10, 6, '2.0', 'IT10', 'FIRST SEMESTER'),
-(11, 6, '3.1', 'IT64', 'FIRST SEMESTER');
+(11, 6, '3.1', 'IT64', 'FIRST SEMESTER'),
+(12, 10, '1.3', 'IT10', 'FIRST SEMESTER');
 
 -- --------------------------------------------------------
 
@@ -62,19 +63,18 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `post` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
-  `admin_id` varchar(255) NOT NULL
+  `admin_id` varchar(255) NOT NULL,
+  `date_posted` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `post`, `type`, `admin_id`) VALUES
-(2, 'Post 1', 'ANNOUNCEMENT', '1'),
-(3, 'Post 2', 'ANNOUNCEMENT', '1'),
-(4, 'Post 3', 'ANNOUNCEMENT', '1'),
-(5, 'Post 4', '', '1'),
-(6, 'Post 5', 'ANNOUNCEMENT', '1');
+INSERT INTO `posts` (`id`, `post`, `type`, `admin_id`, `date_posted`) VALUES
+(7, 'sample', 'EVENT', '1', '2022-05-18'),
+(8, 'please gather to the gym now', 'ANNOUNCEMENT', '1', '2022-05-16'),
+(9, 'cec party', 'EVENT', '1', '2022-05-23');
 
 -- --------------------------------------------------------
 
@@ -120,6 +120,27 @@ INSERT INTO `subjects` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `teachers`
+--
+
+CREATE TABLE `teachers` (
+  `id` int(11) NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `fname`, `lname`, `username`, `password`) VALUES
+(1, 'franco', 'reyes', 'franco@reyes', 'sample');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -140,7 +161,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `section`, `year`, `role`) VALUES
 (1, 'Kurt John ', 'Mojado', 'kjmojado21', 'user', '', '', 'S'),
-(4, 'sample_user_1', 'sample', 'sample_user_1', 'sample_user_1', 'BSIT 1 SECTION 4', 'FIRST YEAR', 'S'),
+(4, 'sample_user_1', 'sample', 'sample', 'samplesample', 'BSIT 1 SECTION 4', 'FIRST YEAR', 'S'),
 (5, 'sample_user_2', 'sample_user_1', 'sample_user_2', 'sample_user_2', 'BSIT 1 SECTION 4', 'FIRST YEAR', 'S'),
 (6, 'sample_user_3', 'sample_user_3', 'sample_user_3', 'sample_user_3', 'BSIT 1 SECTION 4', 'FIRST YEAR', 'S'),
 (7, 'sample_user_4', 'sample_user_4', 'sample_user_4', 'sample_user_4', 'BSIT 1 SECTION 3', 'FIRST YEAR', 'S'),
@@ -148,7 +169,8 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `sec
 (9, 'sample_user_6', 'sample_user_6', 'sample_user_6', 'sample_user_6', 'BSIT 1 SECTION 3', 'FIRST YEAR', 'S'),
 (10, 'sample_user_7', 'sample_user_7', 'sample_user_7', 'sample_user_7', 'BSIT 1 SECTION 2', 'FIRST YEAR', 'S'),
 (11, 'sample_user_8', 'sample_user_8', 'sample_user_8', 'sample_user_8', 'BSIT 1 SECTION 2', 'FIRST YEAR', 'S'),
-(12, 'sample_user_9', 'sample_user_9', 'sample_user_9', 'sample_user_9', 'BSIT 1 SECTION 2', 'FIRST YEAR', 'S');
+(12, 'sample_user_9', 'sample_user_9', 'sample_user_9', 'sample_user_9', 'BSIT 1 SECTION 2', 'FIRST YEAR', 'S'),
+(13, 'sample', 'sample', 'sample', 'sample', 'BSIT 1 SECTION 2', 'SECOND YEAR', 'A');
 
 --
 -- Indexes for dumped tables
@@ -179,6 +201,12 @@ ALTER TABLE `subjects`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -192,19 +220,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `grades`
 --
 ALTER TABLE `grades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -213,10 +241,16 @@ ALTER TABLE `subjects`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
