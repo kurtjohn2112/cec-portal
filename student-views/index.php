@@ -3,6 +3,13 @@ include '../html/head.html';
 include '../functions/student-logic.php';
 
 include 'navbar-student.php';
+foreach (show_week_date() as $day => $date) :
+
+endforeach;
+$date_array = show_week_date();
+$first = reset($date_array);
+$end = end($date_array);
+
 ?>
 
 
@@ -19,21 +26,40 @@ include 'navbar-student.php';
                 </div>
             </div>
             <div class="col-6">
+                <p class="font-monospace">Current Date: <?php echo date("Y/m/d") ?> </p>
+                <p class="font-monospace">Events for this week: <?php echo $first . " - " . $end ?> </p>
                 <?php if (!empty(show('posts'))) : ?>
-                    <?php foreach (show('posts') as $row) : ?>
-                        <div class="card shadow mb-3">
-                            <div class="card-body">
-                                <p class="badge bg-info"><?php echo $row['type'] ?></p>
+                    <?php
+                    foreach (show('posts') as $event) : ?>
+                        <?php foreach (show_week_date() as $day => $date) : ?>
+                            <?php if ($event['date_posted'] == $date) : ?>
+                                <div class="card shadow mb-3">
+                                    <div class="card-body">
+                                        
+                                        <p class="badge bg-info"><?php echo $event['type'] ?></p>
+                                        <p class="badge bg-danger">Date: <?php echo $event['date_posted'] ?></p>
+
+
+                                        <p class="text-muted fst-italic">
+                                            <?php echo $event['post'] ?>
+                                        </p>
+                                    </div>
+
+                                </div>
                                 
-                                <p class="text-muted fst-italic">
-                                <?php echo $row['post'] ?>
-                                </p>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
+
+                    <?php
+                    endforeach;
+                    ?>
                 <?php else : ?>
                     <div class="alert alert-secondary">NO POSTS OR ANNOUNCEMENTS YET</div>
                 <?php endif; ?>
+
+
+
             </div>
             <div class="col-3">
 

@@ -10,8 +10,9 @@ include '../functions/admin-logic.php';
         $post = $_POST['text-area'];
         $type = $_POST['type'];
         $id = 1;
+        $event_date = $_POST['event_date'];
       
-        add_post($post,$type,$id);
+        add_post($post,$type,$id,$event_date);
 
 
     }
@@ -36,6 +37,8 @@ include '../functions/admin-logic.php';
                        <option value="ANNOUNCEMENT">Announcement</option>
                        <option value="EVENT">Event</option>
                    </select>
+                   <input type="date" name="event_date" class="form-control mt-3" id="">
+                   <div class="form-text">Event Date</div>
                 </form>
             </div>
 

@@ -93,9 +93,11 @@ function show_data_multiple($table_name,$pk,$id){
 #------------------ admin query
 
 
-function add_post($post,$type,$id){
+function add_post($post,$type,$id,$date){
+
+   
     $conn = connect();
-    $sql = "INSERT INTO posts (post,type,admin_id)VALUES('$post','$type','$id')";
+    $sql = "INSERT INTO posts (post,type,admin_id,date_posted)VALUES('$post','$type','$id','$date')";
     $result = $conn->query($sql);
 
     if($result){
@@ -172,6 +174,17 @@ function add_grade($id,$grade,$sub,$sem){
     header('Location: '.$_SERVER['REQUEST_URI']);
 
     
+}
+
+function show_week_date()
+{
+    $dt = new DateTime();
+    $dates = [];
+    for ($d = 1; $d <= 5; $d++) {
+        $dt->setISODate($dt->format('o'), $dt->format('W'), $d);
+        $dates[$dt->format('D')] = $dt->format('Y-m-d');
+    }
+    return $dates;
 }
 
 ?>
